@@ -20,7 +20,7 @@ class TestBuySellStock < Minitest::Test
   end
 
   def test_array_with_length_two
-    assert_equal 'Provide an array of two or more elements', BuySellStock.new([1, 3]).max_profit
-    assert_equal 'Provide an array of two or more elements', BuySellStock.new([5, 3]).max_profit
+    assert_equal 2, BuySellStock.new([1, 3]).max_profit
+    assert_equal 0, BuySellStock.new([5, 3]).max_profit
   end
 end
