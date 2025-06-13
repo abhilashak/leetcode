@@ -30,6 +30,6 @@ class BuySellStock
   end
 
   def max_profit
-    'Provide an array of two or more elements' if @prices.empty?
+    'Provide an array of two or more elements' if @prices.length < 2
   end
 end
