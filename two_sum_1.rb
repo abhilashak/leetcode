@@ -32,6 +32,15 @@
 # Follow-up: Can you come up with an algorithm that is less than O(n2) time complexity?
 
 # Solution 1
-def two_sum(nums, _target)
-  'Provide an array with length 2 or more elements' if nums.length < 2
+def two_sum(nums, target)
+  return 'Provide an array with length 2 or more elements' if nums.length < 2
+
+  nums.each_with_index do |selected_num, selected_index|
+    nums.each_with_index do |num, index|
+      already_checked = index <= selected_index
+      next if already_checked
+
+      return [selected_index, index] if selected_num + num == target
+    end
+  end
 end

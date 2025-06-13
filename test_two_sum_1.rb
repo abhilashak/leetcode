@@ -24,4 +24,20 @@ class TestTwoSum < Minitest::Test
   def test_array_with_length_one
     assert_equal 'Provide an array with length 2 or more elements', two_sum([9], 9)
   end
+
+  def test_array_with_length_two
+    assert_equal [0, 1], two_sum([9, 3], 12)
+  end
+
+  def test_array_with_length_three
+    assert_equal [1, 2], two_sum([9, 3, 4], 7)
+  end
+
+  def test_array_with_length_four
+    assert_equal [1, 3], two_sum([9, 3, 4, 8], 11)
+  end
+
+  def test_array_with_length_ten
+    assert_equal [7, 8], two_sum([9, 3, 9, 8, 23, 20, 19, 5, 30, 14], 35)
+  end
 end
