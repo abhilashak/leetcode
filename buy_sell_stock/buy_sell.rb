@@ -30,6 +30,11 @@ class BuySellStock
   end
 
   def max_profit
-    'Provide an array of two or more elements' if @prices.length < 2
+    return 'Provide an array of two or more elements' if @prices.length < 2
+
+    price_difference = @prices[1] - @prices[0]
+    return 0 if price_difference <= 0
+
+    price_difference
   end
 end
