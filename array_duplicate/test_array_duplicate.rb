@@ -45,4 +45,9 @@ class TestArrayDuplicate < Minitest::Test
     assert_equal false, Duplicate.new([2, 1, 3, 4, 6]).present?
     assert_equal true, Duplicate.new([2, 1, 3, 4, 2]).present?
   end
+
+  def test_array_with_length_ten
+    assert_equal true, Duplicate.new([8, 4, 1, 2, 14, 11, 34, 56, 7, 8]).present?
+    assert_equal false, Duplicate.new([2, 1, 8, 3, 9, 4, 7, 6, 0, 12, 51]).present?
+  end
 end
