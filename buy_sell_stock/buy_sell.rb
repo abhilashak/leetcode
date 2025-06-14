@@ -27,14 +27,27 @@
 class BuySellStock
   def initialize(prices)
     @prices = prices
+    @profit_store = {}
   end
 
   def max_profit
     return 'Provide an array of two or more elements' if @prices.length < 2
 
-    price_difference = @prices[1] - @prices[0]
-    return 0 if price_difference <= 0
+    # iterate today's price
+    @prices.each_with_index do |todays_price, index|
+      # check profit with future prices
+      @prices[(index + 1)..].each do |future_price|
+        profit = future_price - todays_price
+        update_profit_store(index, profit) if profit.positive?
+      end
+    end
 
-    price_difference
+    @profit_store.values.max || 0
+  end
+
+  def update_profit_store(index, profit)
+    @profit_store[index] = 0 unless @profit_store[index]
+
+    @profit_store[index] = profit if profit > @profit_store[index]
   end
 end
