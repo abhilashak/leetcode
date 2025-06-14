@@ -29,6 +29,13 @@ class Duplicate
   end
 
   def present?
-    'Provide a non-empty array' if @numbers.empty?
+    return 'Provide a non-empty array' if @numbers.empty?
+
+    count_hash = {}
+    @numbers.each do |number|
+      count_hash[number] ? count_hash[number] += 1 : count_hash[number] = 1
+    end
+
+    count_hash.values.max > 1
   end
 end
