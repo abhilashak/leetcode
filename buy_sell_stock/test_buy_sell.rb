@@ -23,4 +23,9 @@ class TestBuySellStock < Minitest::Test
     assert_equal 2, BuySellStock.new([1, 3]).max_profit
     assert_equal 0, BuySellStock.new([5, 3]).max_profit
   end
+
+  def test_array_with_length_three
+    assert_equal 5, BuySellStock.new([1, 3, 6]).max_profit
+    assert_equal 0, BuySellStock.new([5, 3, 2]).max_profit
+  end
 end
