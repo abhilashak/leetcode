@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require 'minitest/autorun'
-require_relative 'buy_sell'
+require_relative 'buy_sell_2'
 #####################
 ##
 #####################
@@ -16,11 +16,11 @@ class TestBuySellStock < Minitest::Test
 
   # ex: BuySellStock.new([]).max_profit
   def test_array_is_an_empty_array
-    assert_equal 'Provide an array of two or more elements', BuySellStock.new([]).max_profit
+    assert_equal 'Provide an array with 1 or more elements', BuySellStock.new([]).max_profit
   end
 
   def test_array_with_length_one
-    assert_equal 'Provide an array of two or more elements', BuySellStock.new([1]).max_profit
+    assert_equal 0, BuySellStock.new([1]).max_profit
   end
 
   def test_array_with_length_two
