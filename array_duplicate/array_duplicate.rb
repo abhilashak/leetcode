@@ -34,8 +34,10 @@ class Duplicate
     count_hash = {}
     @numbers.each do |number|
       count_hash[number] ? count_hash[number] += 1 : count_hash[number] = 1
+
+      return true if count_hash[number] > 1
     end
 
-    count_hash.values.max > 1
+    false
   end
 end
