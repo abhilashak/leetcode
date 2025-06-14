@@ -12,7 +12,16 @@ class TestArrayDuplicate < Minitest::Test
     ####
   end
 
-  def test_array_with_length_one
+  def test_empty_array
     assert_equal 'Provide a non-empty array', Duplicate.new([]).present?
+  end
+
+  def test_array_with_length_one
+    assert_equal false, Duplicate.new([2]).present?
+  end
+
+  def test_array_with_length_two
+    assert_equal false, Duplicate.new([1, 2]).present?
+    assert_equal true, Duplicate.new([2, 2]).present?
   end
 end
