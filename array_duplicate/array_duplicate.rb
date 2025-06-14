@@ -23,3 +23,12 @@
 # Input: nums = [1,1,1,3,3,4,3,2,4,2]
 # Output: true
 #############################
+class Duplicate
+  def initialize(nums)
+    @numbers = nums
+  end
+
+  def present?
+    'Provide a non-empty array' if @numbers.empty?
+  end
+end
