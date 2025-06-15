@@ -31,6 +31,7 @@ class Numbers
     @numbers = nums
   end
 
+  # Original O(n²) time, O(n) space solution
   def product_except_self
     return 'Provide an array of length atleast two' if @numbers.length < 2
 
@@ -40,5 +41,28 @@ class Numbers
     end
 
     answer
+  end
+
+  # Optimized O(n) time, O(1) space solution
+  def product_except_self_optimized
+    return 'Provide an array of length atleast two' if @numbers.length < 2
+
+    result = Array.new(@numbers.length, 1)
+
+    # STEP 1: Fill result[i] with product of all numbers TO THE LEFT of i
+    left_product = 1
+    @numbers.each_with_index do |num, i|
+      result[i] = left_product
+      left_product *= num # Update for next iteration
+    end
+
+    # STEP 2: Multiply result[i] with product of all numbers TO THE RIGHT of i
+    right_product = 1
+    (@numbers.length - 1).downto(0) do |i|
+      result[i] *= right_product
+      right_product *= @numbers[i] # Update for next iteration
+    end
+
+    result
   end
 end
