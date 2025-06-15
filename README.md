@@ -153,3 +153,51 @@ Output: true
 ### Files
 - `array_duplicate/array_duplicate.rb` - Hash set implementation
 - `array_duplicate/test_array_duplicate.rb` - Test cases
+
+---
+
+## 4. Product of Array Except Self
+**Problem Link:** [Product of Array Except Self](https://leetcode.com/problems/product-of-array-except-self/)
+
+### Problem Description
+Given an integer array `nums`, return an array `answer` such that `answer[i]` is equal to the product of all the elements of `nums` except `nums[i]`.
+
+The product of any prefix or suffix of `nums` is guaranteed to fit in a 32-bit integer.
+
+You must write an algorithm that runs in O(n) time and without using the division operation.
+
+### Examples
+```
+Input: nums = [1,2,3,4]
+Output: [24,12,8,6]
+
+Input: nums = [-1,1,0,-3,3]
+Output: [0,0,9,0,0]
+```
+
+### Constraints
+- 2 <= nums.length <= 105
+- -30 <= nums[i] <= 30
+- The product of any prefix or suffix of nums is guaranteed to fit in a 32-bit integer.
+
+### Solution Approach
+1. **Brute Force Solution (O(n²) time complexity)**
+   - For each element at index i:
+     - Create a new array excluding the element at index i
+     - Calculate the product of all remaining elements
+     - Store the result in the answer array
+
+### Time and Space Complexity
+- Time Complexity: O(n²) - for each element, we process the remaining n-1 elements
+- Space Complexity: O(1) - excluding the output array, only constant extra space used
+
+### Key Learnings
+- Array manipulation with `reject` and `with_index`
+- Product calculation using `inject(:*)`
+- Handling edge cases (arrays with length < 2)
+- Understanding the constraint of no division operation
+- **Follow-up Challenge**: Can be optimized to O(n) time with O(1) extra space using left and right pass technique
+
+### Files
+- `product_except_self/product_except_self.rb` - Brute force implementation
+- `product_except_self/test_product_except_self.rb` - Test cases
