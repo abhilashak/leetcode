@@ -104,3 +104,52 @@ Explanation: In this case, no transactions are done and the max profit = 0.
 - `buy_sell_stock/buy_sell_1.rb` - Optimized O(n) solution
 - `buy_sell_stock/buy_sell_2.rb` - Alternative implementation
 - Test files: `test_buy_sell_*.rb`
+
+---
+
+## 3. Contains Duplicate
+**Problem Link:** [Contains Duplicate](https://leetcode.com/problems/contains-duplicate/)
+
+### Problem Description
+Given an integer array `nums`, return `true` if any value appears at least twice in the array, and return `false` if every element is distinct.
+
+### Examples
+```
+Input: nums = [1,2,3,1]
+Output: true
+Explanation: The element 1 occurs at the indices 0 and 3.
+
+Input: nums = [1,2,3,4]
+Output: false
+Explanation: All elements are distinct.
+
+Input: nums = [1,1,1,3,3,4,3,2,4,2]
+Output: true
+```
+
+### Constraints
+- 1 <= nums.length <= 105
+- -109 <= nums[i] <= 109
+
+### Solution Approach
+1. **Hash Set Solution (O(n) time complexity)**
+   - Use a set to store numbers we've seen
+   - For each number:
+     - Check if it already exists in the set
+     - If found, return `true` (duplicate found)
+     - If not found, add it to the set
+   - If we complete the loop without finding duplicates, return `false`
+
+### Time and Space Complexity
+- Time Complexity: O(n) - single pass through the array
+- Space Complexity: O(n) - storing at most n elements in the set
+
+### Key Learnings
+- Using sets for O(1) lookups and duplicate detection
+- Early termination when duplicate is found
+- Handling edge cases (empty arrays, single elements)
+- Set vs Array performance for membership testing
+
+### Files
+- `array_duplicate/array_duplicate.rb` - Hash set implementation
+- `array_duplicate/test_array_duplicate.rb` - Test cases
