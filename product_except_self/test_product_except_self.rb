@@ -25,9 +25,16 @@ class TestProductExceptSelf < Minitest::Test
 
   def test_array_of_length_two
     assert_equal [3, 4], Numbers.new([4, 3]).product_except_self
+    assert_equal [6, 5], Numbers.new([5, 6]).product_except_self
   end
 
   def test_array_of_length_three
+    assert_equal [6, 3, 2], Numbers.new([1, 2, 3]).product_except_self
     assert_equal [15, 20, 12], Numbers.new([4, 3, 5]).product_except_self
+  end
+
+  def test_array_of_length_four
+    assert_equal [70, 140, 56, 40], Numbers.new([4, 2, 5, 7]).product_except_self
+    assert_equal [216, 54, 36, 24], Numbers.new([1, 4, 6, 9]).product_except_self
   end
 end
