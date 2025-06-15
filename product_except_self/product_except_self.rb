@@ -32,11 +32,11 @@ class Numbers
   end
 
   def product_except_self
-    return 'Provide an aaray of length atleast two' if @numbers.length < 2
+    return 'Provide an array of length atleast two' if @numbers.length < 2
 
     answer = []
-    @numbers.each do |number|
-      answer << @numbers.reject { |ele| ele == number }.sum
+    @numbers.each_with_index do |_number, index|
+      answer << @numbers.reject.with_index { |_num, i| index == i }.inject(:*)
     end
 
     answer
