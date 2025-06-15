@@ -16,6 +16,18 @@ class TestProductExceptSelf < Minitest::Test
   end
 
   def test_empty_array
-    assert_equal 'Provide an aaray of length atleast two', ProductNumbers.new([]).except_self
+    assert_equal 'Provide an aaray of length atleast two', Numbers.new([]).product_except_self
+  end
+
+  def test_array_of_length_one
+    assert_equal 'Provide an aaray of length atleast two', Numbers.new([4]).product_except_self
+  end
+
+  def test_array_of_length_two
+    assert_equal 'Provide an aaray of length atleast two', Numbers.new([4]).product_except_self
+  end
+
+  def test_array_of_length_three
+    assert_equal 'Provide an aaray of length atleast two', Numbers.new([4]).product_except_self
   end
 end
