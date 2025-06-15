@@ -188,8 +188,8 @@ Output: [0,0,9,0,0]
      - Store the result in the answer array
 
 ### Time and Space Complexity
-- Time Complexity: O(n²) - for each element, we process the remaining n-1 elements
-- Space Complexity: O(1) - excluding the output array, only constant extra space used
+- Time Complexity: O(n²) - for each element, we process the remaining n-1 elements using `reject` (O(n)) and `inject` (O(n))
+- Space Complexity: O(n) - excluding the output array, `reject` creates temporary arrays of size n-1 in each iteration
 
 ### Key Learnings
 - Array manipulation with `reject` and `with_index`
