@@ -31,11 +31,11 @@ class Duplicate
   def present?
     return 'Provide a non-empty array' if @numbers.empty?
 
-    count_hash = {}
+    found = Set.new
     @numbers.each do |number|
-      count_hash[number] ? count_hash[number] += 1 : count_hash[number] = 1
+      return true if found.include?(number)
 
-      return true if count_hash[number] > 1
+      found.add(number)
     end
 
     false
