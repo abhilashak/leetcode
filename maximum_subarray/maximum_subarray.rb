@@ -33,6 +33,15 @@ class Subarray
   def max
     return 'Provide non-empty array' if @numbers.empty?
 
-    @numbers.first if @numbers.length == 1
+    return @numbers.first if @numbers.length == 1
+
+    sum_hash = {}
+    @numbers.each_with_index do |num, i|
+      sum_hash[i] = num
+      other_nums_sum = @numbers[i..].inject(:+)
+      sum_hash[i] = other_nums_sum if other_nums_sum > sum_hash[i]
+    end
+
+    sum_hash.values.max
   end
 end
