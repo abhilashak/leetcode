@@ -41,4 +41,11 @@ class TestMaximumSubarray < Minitest::Test
     assert_equal(-1, Subarray.new([-1, -2]).max)
     assert_equal(0, Subarray.new([0, 0]).max)
   end
+
+  def test_array_with_length_four
+    assert_equal 6, Subarray.new([4, -1, 2, 1]).max
+    assert_equal 4, Subarray.new([-2, 1, -3, 4]).max
+    assert_equal 3, Subarray.new([1, -3, 2, 1]).max
+    assert_equal(-1, Subarray.new([-1, -2, -3, -4]).max)
+  end
 end
