@@ -28,24 +28,31 @@ class TestMaximumSubarray < Minitest::Test
   end
 
   def test_empty_array
-    assert_equal 'Provide non-empty array', Subarray.new([]).max
+    assert_equal 'Provide non-empty array', Subarray.new([]).max_sum
   end
 
   def test_array_with_length_one
-    assert_equal 1, Subarray.new([1]).max
+    assert_equal 1, Subarray.new([1]).max_sum
   end
 
   def test_array_with_length_two
-    assert_equal 3, Subarray.new([1, 2]).max
-    assert_equal 1, Subarray.new([1, -2]).max
-    assert_equal(-1, Subarray.new([-1, -2]).max)
-    assert_equal(0, Subarray.new([0, 0]).max)
+    assert_equal 3, Subarray.new([1, 2]).max_sum
+    assert_equal 1, Subarray.new([1, -2]).max_sum
+    assert_equal(-1, Subarray.new([-1, -2]).max_sum)
+    assert_equal(0, Subarray.new([0, 0]).max_sum)
   end
 
   def test_array_with_length_four
-    assert_equal 6, Subarray.new([4, -1, 2, 1]).max
-    assert_equal 4, Subarray.new([-2, 1, -3, 4]).max
-    assert_equal 3, Subarray.new([1, -3, 2, 1]).max
-    assert_equal(-1, Subarray.new([-1, -2, -3, -4]).max)
+    assert_equal 6, Subarray.new([4, -1, 2, 1]).max_sum
+    assert_equal 4, Subarray.new([-2, 1, -3, 4]).max_sum
+    assert_equal 3, Subarray.new([1, -3, 2, 1]).max_sum
+    assert_equal(-1, Subarray.new([-1, -2, -3, -4]).max_sum)
+  end
+
+  def test_array_with_length_six
+    assert_equal 21, Subarray.new([1, 2, 3, 4, 5, 6]).max_sum
+    assert_equal 9, Subarray.new([-1, -2, 5, 4, -3, -1]).max_sum
+    assert_equal 5, Subarray.new([-2, 1, -3, 4, -1, 2]).max_sum
+    assert_equal(-1, Subarray.new([-1, -2, -3, -4, -5, -6]).max_sum)
   end
 end
