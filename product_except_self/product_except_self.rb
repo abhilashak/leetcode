@@ -29,6 +29,7 @@
 class Numbers
   def initialize(nums)
     @numbers = nums
+    @answer = []
   end
 
   # Original O(n²) time, O(n) space solution
@@ -47,22 +48,29 @@ class Numbers
   def product_except_self_optimized
     return 'Provide an array of length atleast two' if @numbers.length < 2
 
-    result = Array.new(@numbers.length, 1)
+    calculate_left_products
+    multiply_right_products
 
-    # STEP 1: Fill result[i] with product of all numbers TO THE LEFT of i
+    @answer
+  end
+
+  private
+
+  # STEP 1: Fill @answer[i] with product of all numbers TO THE LEFT of i
+  def calculate_left_products
     left_product = 1
-    @numbers.each_with_index do |num, i|
-      result[i] = left_product
-      left_product *= num # Update for next iteration
+    0.upto(@numbers.length - 1) do |i|
+      @answer[i] = left_product
+      left_product *= @numbers[i] # Update for next iteration
     end
+  end
 
-    # STEP 2: Multiply result[i] with product of all numbers TO THE RIGHT of i
+  # STEP 2: Multiply @answer[i] with product of all numbers TO THE RIGHT of i
+  def multiply_right_products
     right_product = 1
     (@numbers.length - 1).downto(0) do |i|
-      result[i] *= right_product
+      @answer[i] *= right_product
       right_product *= @numbers[i] # Update for next iteration
     end
-
-    result
   end
 end
