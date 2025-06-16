@@ -25,3 +25,14 @@
 # Follow up: If you have figured out the O(n) solution, try coding another solution using
 # the divide and conquer approach, which is more subtle.
 #######################################
+class Subarray
+  def initialize(numbers)
+    @numbers = numbers
+  end
+
+  def max
+    return 'Provide non-empty array' if @numbers.empty?
+
+    @numbers.first if @numbers.length == 1
+  end
+end
