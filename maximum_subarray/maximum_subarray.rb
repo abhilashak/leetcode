@@ -38,10 +38,35 @@ class Subarray
     sum_hash = {}
     @numbers.each_with_index do |num, i|
       sum_hash[i] = num
-      other_nums_sum = @numbers[i..].inject(:+)
-      sum_hash[i] = other_nums_sum if other_nums_sum > sum_hash[i]
+      @numbers[(i + 1)..].each do |num_right|
+        largest_sum = sum_hash[i] + num_right
+        sum_hash[i] = largest_sum if largest_sum > sum_hash[i]
+      end
+      # sum_hash[i] = other_nums_sum if other_nums_sum > sum_hash[i]
     end
 
     sum_hash.values.max
+  end
+
+  def max_sum
+    return 'Provide non-empty array' if @numbers.empty?
+
+    return @numbers.first if @numbers.length == 1
+
+    maximum_sum = @numbers.first
+    # do array right side scan
+    @numbers.each_with_index do |num, i|
+      current_sum = num # calculate from current number
+      right_side_numbers = @numbers[(i + 1)..]
+      is_last_number_of_array = right_side_numbers.empty?
+      maximum_sum = current_sum if is_last_number_of_array && current_sum > maximum_sum
+
+      right_side_numbers.each do |num_right|
+        current_sum += num_right
+        maximum_sum = current_sum if current_sum > maximum_sum
+      end
+    end
+
+    maximum_sum
   end
 end
