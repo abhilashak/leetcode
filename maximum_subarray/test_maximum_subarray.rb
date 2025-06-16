@@ -30,4 +30,8 @@ class TestMaximumSubarray < Minitest::Test
   def test_empty_array
     assert_equal 'Provide non-empty array', Subarray.new([]).max
   end
+
+  def test_array_with_length_one
+    assert_equal 1, Subarray.new([1]).max
+  end
 end
