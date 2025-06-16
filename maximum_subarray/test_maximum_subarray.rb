@@ -55,4 +55,12 @@ class TestMaximumSubarray < Minitest::Test
     assert_equal 5, Subarray.new([-2, 1, -3, 4, -1, 2]).max_sum
     assert_equal(-1, Subarray.new([-1, -2, -3, -4, -5, -6]).max_sum)
   end
+
+  def test_array_with_length_ten
+    assert_equal 55, Subarray.new([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]).max_sum
+    assert_equal 15, Subarray.new([-1, -2, 5, 4, 3, 2, 1, -3, -4, -5]).max_sum
+    assert_equal 21, Subarray.new([8, 7, 6, -10, -5, -3, -2, -1, -4, -6]).max_sum
+    assert_equal 14, Subarray.new([-8, -7, -6, -10, -5, -3, 2, 3, 4, 5]).max_sum
+    assert_equal(4, Subarray.new([-1, -2, 1, 2, -5, 2, -1, 0, 3, -10]).max_sum)
+  end
 end
