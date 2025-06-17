@@ -41,7 +41,10 @@ class Substring
       next if @string[i] == @string[i + 1]
 
       @string.chars[(i + 1)..].each do |c|
-        break if distinct_char.include?(c)
+        if distinct_char.include?(c)
+          distinct_char = [] # clear for next iteration
+          break
+        end
 
         distinct_char << c # update distinct char
         max_count_hash[i] += 1
