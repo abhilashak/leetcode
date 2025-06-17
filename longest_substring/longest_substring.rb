@@ -31,6 +31,8 @@ class Substring
   def longest
     return 0 if @string.empty?
 
-    1 if @string.length == 1
+    return 1 if @string.length == 1
+
+    @string[0] == @string[1] ? 1 : 2
   end
 end
