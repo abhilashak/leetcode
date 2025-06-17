@@ -37,20 +37,15 @@ class Subarray
 
     return @numbers.first if @numbers.length == 1
 
-    maximum_sum = @numbers.first
-    # do array right side scan
-    @numbers.each_with_index do |num, i|
-      current_sum = num # calculate from current number
-      right_side_numbers = @numbers[(i + 1)..]
-      is_last_number_of_array = right_side_numbers.empty?
-      maximum_sum = current_sum if is_last_number_of_array && current_sum > maximum_sum
-
-      right_side_numbers.each do |num_right|
-        current_sum += num_right
-        maximum_sum = current_sum if current_sum > maximum_sum
-      end
+    max_sum = @numbers.first
+    inherit_sum = @numbers.first
+    @numbers[1..].each do |num|
+      inherit_sum_add_num = inherit_sum + num
+      # if current num is greater than inherited sum break the loop and start from current num
+      inherit_sum = num > inherit_sum_add_num ? num : inherit_sum_add_num
+      # preserve highest of this inherited sum for each element iteration
+      max_sum = inherit_sum > max_sum ? inherit_sum : max_sum
     end
-
-    maximum_sum
+    max_sum
   end
 end
