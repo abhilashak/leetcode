@@ -201,3 +201,63 @@ Output: [0,0,9,0,0]
 ### Files
 - `product_except_self/product_except_self.rb` - Brute force implementation
 - `product_except_self/test_product_except_self.rb` - Test cases
+
+---
+
+## 5. Maximum Subarray
+**Problem Link:** [Maximum Subarray](https://leetcode.com/problems/maximum-subarray/)
+
+### Problem Description
+Given an integer array `nums`, find the subarray with the largest sum, and return its sum.
+
+### Examples
+```
+Input: nums = [-2,1,-3,4,-1,2,1,-5,4]
+Output: 6
+Explanation: The subarray [4,-1,2,1] has the largest sum 6.
+
+Input: nums = [1]
+Output: 1
+Explanation: The subarray [1] has the largest sum 1.
+
+Input: nums = [5,4,-1,7,8]
+Output: 23
+Explanation: The subarray [5,4,-1,7,8] has the largest sum 23.
+```
+
+### Constraints
+- 1 <= nums.length <= 105
+- -104 <= nums[i] <= 104
+
+### Solution Approach
+1. **Kadane's Algorithm (O(n) time complexity)**
+   - Use dynamic programming approach with two variables:
+     - `inherit_sum`: Maximum sum ending at current position
+     - `max_sum`: Global maximum sum seen so far
+   - For each element:
+     - Decide whether to extend the existing subarray or start a new one
+     - Update `inherit_sum` = max(current_element, inherit_sum + current_element)
+     - Update `max_sum` if `inherit_sum` is greater
+
+### Time and Space Complexity
+- Time Complexity: O(n) - single pass through the array
+- Space Complexity: O(1) - only using constant extra space
+
+### Key Learnings
+- Kadane's algorithm for maximum subarray problem
+- Dynamic programming with space optimization
+- Decision making: extend vs. start new subarray
+- Handling arrays with all negative numbers
+- **Follow-up**: Can also be solved using divide and conquer approach with O(n log n) complexity
+
+### Files
+- `maximum_subarray/maximum_subarray.rb` - Kadane's algorithm implementation
+   - Kadane's algorithm is a dynamic programming approach used to efficiently find the maximum sum of a contiguous subarray within a given array of numbers. It achieves this in linear time complexity, O(n), where n is the size of the input array. The algorithm works by iteratively calculating the maximum sum of subarrays ending at each position in the array. 
+   - The algorithm maintains two variables:
+     - `inherit_sum`: Maximum sum ending at current position
+     - `max_sum`: Global maximum sum seen so far
+   - For each element:
+     - Decide whether to extend the existing subarray or start a new one
+     - Update `inherit_sum` = max(current_element, inherit_sum + current_element)
+     - Update `max_sum` if `inherit_sum` is greater
+- `maximum_subarray/test_maximum_subarray.rb` - Test cases
