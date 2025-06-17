@@ -33,14 +33,21 @@ class Substring
 
     return 1 if @string.length == 1
 
-    longest_substring_length = 0
-    @string.each_char.with_index do |_char, i|
-      longest_substring_length = if @string[i] == @string[i + 1]
-                                   longest_substring_length
-                                 else
-                                   longest_substring_length + 1
-                                 end
+    max_count_hash = {} # calculate max count for each char position
+    @string.each_char.with_index do |char, i|
+      distinct_char = [char]
+      @string.chars[i..].each do |c|
+        max_count_hash[i] ||= 1 # escape nil condition
+
+        if distinct_char.include?(c)
+          [max_count_hash[i], 1].max # keep the max substring count
+        else
+          distinct_char << c # update distinct char
+          max_count_hash[i] += 1
+        end
+      end
     end
-    longest_substring_length
+
+    max_count_hash.values.max
   end
 end
