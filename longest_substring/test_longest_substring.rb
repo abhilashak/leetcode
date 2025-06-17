@@ -65,8 +65,8 @@ class TestLongestSubstring < Minitest::Test
 
   def test_mixed_characters_with_symbols
     # Test with letters, digits, symbols and spaces
-    assert_equal 7, Substring.new('abc123!@#').longest  # all unique
-    assert_equal 4, Substring.new('a1!a2@b').longest    # "1!a2" or "a2@b"
+    assert_equal 9, Substring.new('abc123!@#').longest  # all unique
+    assert_equal 6, Substring.new('a1!a2@b').longest    # "1!a2@b"
     assert_equal 3, Substring.new('a b c a').longest    # "a b" or "b c"
   end
 
@@ -74,6 +74,6 @@ class TestLongestSubstring < Minitest::Test
     # Test with longer strings for performance
     assert_equal 26, Substring.new('abcdefghijklmnopqrstuvwxyz').longest # all alphabet
     assert_equal 10, Substring.new('0123456789').longest # all digits
-    assert_equal 6, Substring.new('hello world!!!').longest # "o worl" or similar
+    assert_equal 7, Substring.new('hello world!!!').longest # " world!"
   end
 end
