@@ -261,3 +261,54 @@ Explanation: The subarray [5,4,-1,7,8] has the largest sum 23.
      - Update `inherit_sum` = max(current_element, inherit_sum + current_element)
      - Update `max_sum` if `inherit_sum` is greater
 - `maximum_subarray/test_maximum_subarray.rb` - Test cases
+
+---
+
+## 6. Longest Substring Without Repeating Characters
+**Problem Link:** [Longest Substring Without Repeating Characters](https://leetcode.com/problems/longest-substring-without-repeating-characters/)
+
+### Problem Description
+Given a string `s`, find the length of the longest substring without repeating characters.
+
+### Examples
+```
+Input: s = "abcabcbb"
+Output: 3
+Explanation: The answer is "abc", with the length of 3.
+
+Input: s = "bbbbb"
+Output: 1
+Explanation: The answer is "b", with the length of 1.
+
+Input: s = "pwwkew"
+Output: 3
+Explanation: The answer is "wke", with the length of 3.
+Notice that the answer must be a substring, "pwke" is a subsequence and not a substring.
+```
+
+### Constraints
+- 0 <= s.length <= 5 * 104
+- s consists of English letters, digits, symbols and spaces.
+
+### Solution Approach
+1. **Sliding Window Technique (O(n) time complexity)**
+   - Use two pointers to maintain a sliding window
+   - Expand the right pointer and track characters in a hash set
+   - When a duplicate is found, shrink the window from the left
+   - Keep track of the maximum window size encountered
+   - This ensures we find the longest substring without repeating characters
+
+### Time and Space Complexity
+- Time Complexity: O(n) - each character is visited at most twice (once by right pointer, once by left pointer)
+- Space Complexity: O(min(m, n)) - where m is the size of the character set and n is the length of the string
+
+### Key Learnings
+- Sliding window technique for substring problems
+- Using hash sets for O(1) character lookups
+- Two-pointer approach for optimal space and time efficiency
+- Understanding the difference between substring and subsequence
+- Handling edge cases (empty strings, single characters)
+
+### Files
+- `longest_substring/longest_substring.rb` - Sliding window implementation
+- `longest_substring/test_longest_substring.rb` - Test cases
