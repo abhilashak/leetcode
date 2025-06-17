@@ -20,4 +20,9 @@ class TestLongestSubstring < Minitest::Test
   def test_array_with_length_one
     assert_equal 1, Substring.new('a').longest
   end
+
+  def test_array_with_length_two
+    assert_equal 2, Substring.new('ab').longest
+    assert_equal 1, Substring.new('aa').longest
+  end
 end
