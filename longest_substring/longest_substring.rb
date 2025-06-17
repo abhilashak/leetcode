@@ -34,17 +34,17 @@ class Substring
     return 1 if @string.length == 1
 
     max_count_hash = {} # calculate max count for each char position
+    distinct_char = []
     @string.each_char.with_index do |char, i|
-      distinct_char = [char]
-      @string.chars[i..].each do |c|
-        max_count_hash[i] ||= 1 # escape nil condition
+      max_count_hash[i] ||= 1 # escape nil condition
+      distinct_char << char unless distinct_char.include?(char)
+      next if @string[i] == @string[i + 1]
 
-        if distinct_char.include?(c)
-          [max_count_hash[i], 1].max # keep the max substring count
-        else
-          distinct_char << c # update distinct char
-          max_count_hash[i] += 1
-        end
+      @string.chars[(i + 1)..].each do |c|
+        break if distinct_char.include?(c)
+
+        distinct_char << c # update distinct char
+        max_count_hash[i] += 1
       end
     end
 
