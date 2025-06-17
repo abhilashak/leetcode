@@ -40,4 +40,10 @@ class TestLongestSubstring < Minitest::Test
     assert_equal 2, Substring.new('aabb').longest
     assert_equal 1, Substring.new('aaaa').longest
   end
+
+  def test_array_with_length_six
+    assert_equal 3, Substring.new('abcabc').longest  # "abc" substring repeats
+    assert_equal 6, Substring.new('abcdef').longest  # all unique characters - entire string
+    assert_equal 2, Substring.new('aabbcc').longest  # pairs of duplicates
+  end
 end
