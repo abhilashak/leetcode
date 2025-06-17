@@ -31,4 +31,13 @@ class TestLongestSubstring < Minitest::Test
     assert_equal 2, Substring.new('aab').longest
     assert_equal 1, Substring.new('aaa').longest
   end
+
+  def test_array_with_length_four
+    assert_equal 4, Substring.new('abcd').longest
+    assert_equal 3, Substring.new('aabc').longest
+    assert_equal 2, Substring.new('aaba').longest
+    assert_equal 2, Substring.new('abab').longest
+    assert_equal 2, Substring.new('aabb').longest
+    assert_equal 1, Substring.new('aaaa').longest
+  end
 end
