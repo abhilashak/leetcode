@@ -33,20 +33,24 @@ class Substring
 
     return 1 if @string.length == 1
 
-    max_count_hash = {} # calculate max count for each char position
-    distinct_char = []
+    max_count_hash = {} # calculate max substring count for each char position
+    distinct_char = []  # store distinct chars for each iteration then clear it
     @string.each_char.with_index do |char, i|
       max_count_hash[i] ||= 1 # escape nil condition
       distinct_char << char unless distinct_char.include?(char)
+      # if adjacent chars are same pointer move to next same char
       next if @string[i] == @string[i + 1]
 
+      # iterate other chars to find substring length
       @string.chars[(i + 1)..].each do |c|
+        # if we found a same char, substring is found and clear for next iteration
         if distinct_char.include?(c)
-          distinct_char = [] # clear for next iteration
+          distinct_char = []
           break
         end
 
-        distinct_char << c # update distinct char
+        # if not found a same char till now, update distinct char and count
+        distinct_char << c
         max_count_hash[i] += 1
       end
     end
