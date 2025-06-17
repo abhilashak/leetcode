@@ -23,3 +23,14 @@
 # 0 <= s.length <= 5 * 104
 # s consists of English letters, digits, symbols and spaces.
 #######################################
+class Substring
+  def initialize(string)
+    @string = string
+  end
+
+  def longest
+    return 0 if @string.empty?
+
+    1 if @string.length == 1
+  end
+end
