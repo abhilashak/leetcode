@@ -33,6 +33,14 @@ class Substring
 
     return 1 if @string.length == 1
 
-    @string[0] == @string[1] ? 1 : 2
+    longest_substring_length = 0
+    @string.each_char.with_index do |_char, i|
+      longest_substring_length = if @string[i] == @string[i + 1]
+                                   longest_substring_length
+                                 else
+                                   longest_substring_length + 1
+                                 end
+    end
+    longest_substring_length
   end
 end
