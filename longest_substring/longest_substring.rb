@@ -26,6 +26,9 @@
 class Substring
   def initialize(string)
     @string = string
+    @substring_lengths = []
+    # store distinct chars for each iteration then clear it
+    @distinct_chars = []
   end
 
   def longest
@@ -33,28 +36,43 @@ class Substring
 
     return 1 if @string.length == 1
 
-    max_count_hash = {} # calculate max substring count for each char position
-    distinct_char = []  # store distinct chars for each iteration then clear it
-    @string.each_char.with_index do |char, i|
-      max_count_hash[i] ||= 1 # escape nil condition
-      distinct_char << char unless distinct_char.include?(char)
-      # if adjacent chars are same pointer move to next same char
-      next if @string[i] == @string[i + 1]
+    find_substring
+  end
 
-      # iterate other chars to find substring length
-      @string.chars[(i + 1)..].each do |c|
-        # if we found a same char, substring is found and clear for next iteration
-        if distinct_char.include?(c)
-          distinct_char = []
-          break
-        end
+  private
 
-        # if not found a same char till now, update distinct char and count
-        distinct_char << c
-        max_count_hash[i] += 1
+  def find_substring
+    @string.each_char.with_index do |char, char_index|
+      # Duplicate char detected
+      if @distinct_chars.include?(char)
+        start_new_substring(char)
+        next
+      else # fresh char detected
+        update_fresh_char(char, char_index)
       end
     end
 
-    max_count_hash.values.max
+    @substring_lengths.max
+  end
+
+  def start_new_substring(char)
+    # store the current substring length
+    @substring_lengths << @distinct_chars.size
+
+    # update the distinct chars avoiding old duplicate char and adding current
+    # duplicate char that is detected
+    @distinct_chars = @distinct_chars[(@distinct_chars.index(char) + 1)..]
+    @distinct_chars << char
+  end
+
+  def update_fresh_char(char, char_index)
+    @distinct_chars << char
+
+    last_char = char_index == @string.length - 1
+    # Check if this is the last character
+    return unless last_char
+
+    # Handle end of string - store the final substring length
+    @substring_lengths << @distinct_chars.size
   end
 end
