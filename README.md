@@ -1,5 +1,50 @@
 # LeetCode Solutions
 
+![Tests](https://github.com/abhilashak/leetcode/workflows/Run%20All%20LeetCode%20Tests/badge.svg)
+
+## 🚀 Continuous Integration
+
+This repository uses **GitHub Actions** to automatically run all test cases whenever code is pushed or pull requests are created.
+
+### 📋 What Gets Tested
+- **Automatic Discovery**: Finds all folders containing `test_*.rb` files
+- **Comprehensive Testing**: Runs every test file across all LeetCode solution folders
+- **Clear Reporting**: Provides detailed output showing which tests passed/failed
+- **Build Status**: Fails the build if any test fails, ensuring code quality
+
+### 🔧 Workflow Configuration
+- **Triggers**: Runs on push to `main`/`develop` branches and pull requests to `main`
+- **Ruby Version**: Uses Ruby 3.2 with automatic dependency caching
+- **Test Framework**: Supports any Ruby testing framework (Minitest, RSpec, etc.)
+- **Output**: Color-coded results with folder-by-folder breakdown
+
+### 📊 Test Structure
+Each solution folder contains:
+- **Solution files**: `*.rb` (main implementation)
+- **Test files**: `test_*.rb` (automated test cases)
+- **Multiple approaches**: Different algorithm implementations with separate tests
+
+### 🎯 Example Output
+```
+🧪 Running LeetCode Solution Tests...
+
+📁 Testing folder: two_sum
+  🔍 Running test_two_sum_1.rb...
+  ✅ test_two_sum_1.rb passed
+  🔍 Running test_two_sum_2.rb...
+  ✅ test_two_sum_2.rb passed
+✅ All tests passed in two_sum
+
+🎯 TEST SUMMARY
+📊 Total folders tested: 6
+✅ Passed: 6
+❌ Failed: 0
+
+🎉 All tests passed successfully!
+```
+
+---
+
 ## 1. Two Sum
 **Problem Link:** [Two Sum](https://leetcode.com/problems/two-sum/)
 
