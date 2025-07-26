@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 # disable rubocop GuardClause for better readability in the code
-# rubocop:disable Style/GuardClause
 ###########################################################
 # #209
 # Given an array of positive integers nums and a positive integer target, return the minimal length of a subarray
@@ -68,10 +67,8 @@ class SubArray
   def update_min_length
     new_length = @right_pos - @left_pos + 1
 
-    if min_length_empty? || min_or_equal_length?(new_length)
-      @min_length = new_length
-      @left_pos += 1
-    end
+    @min_length = new_length if min_length_empty? || min_length_greater?(new_length)
+    @left_pos += 1
   end
 
   def solution_found?
@@ -85,7 +82,7 @@ class SubArray
   # if new length of subarray found is less than already found min length
   # or new length found is equal to previous min length (should decrease window size
   # by increasing left pos to find the less length subarray)
-  def min_or_equal_length?(new_length)
-    new_length <= @min_length
+  def min_length_greater?(new_length)
+    @min_length > new_length
   end
 end

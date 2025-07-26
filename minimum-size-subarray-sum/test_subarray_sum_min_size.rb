@@ -109,4 +109,14 @@ class TestSubArraySumMinSize < Minitest::Test
     assert_equal 3, SubArray.new([3, 3, 3, 3], 9).min_size
     assert_equal 0, SubArray.new([3, 3, 3, 3], 13).min_size
   end
+
+  def test_increasing_sequence
+    assert_equal 2, SubArray.new([1, 2, 3, 4, 5], 6).min_size
+    assert_equal 3, SubArray.new([1, 2, 3, 3, 3], 7).min_size
+  end
+
+  def test_decreasing_sequence
+    assert_equal 2, SubArray.new([5, 4, 3, 2, 1], 7).min_size
+    assert_equal 3, SubArray.new([5, 3, 3, 2, 1], 9).min_size
+  end
 end
