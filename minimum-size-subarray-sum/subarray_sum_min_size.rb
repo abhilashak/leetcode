@@ -41,7 +41,6 @@ class SubArray
 
   def min_size
     while @right_pos < @nums.length
-      # first position where left and right positions are at starting point
       @sum = calculate_sum
 
       if solution_found?
