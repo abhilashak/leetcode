@@ -34,6 +34,8 @@ class SubArray
   end
 
   def min_size
-    0 if @nums.length == 1 && @nums.first < @target
+    return unless @nums.length == 1
+
+    @nums.first == @target ? 1 : 0
   end
 end
