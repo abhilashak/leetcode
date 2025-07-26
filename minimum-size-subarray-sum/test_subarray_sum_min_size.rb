@@ -21,5 +21,7 @@ class TestSubArraySumMinSize < Minitest::Test
   def test_array_of_length_two
     assert_equal 0, SubArray.new([2, 2], 5).min_size
     assert_equal 0, SubArray.new([1, 2], 10).min_size
+    assert_equal 2, SubArray.new([2, 2], 4).min_size
+    assert_equal 2, SubArray.new([3, 5], 8).min_size
   end
 end
