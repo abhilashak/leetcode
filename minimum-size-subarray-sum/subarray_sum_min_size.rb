@@ -33,5 +33,7 @@ class SubArray
     @target = target
   end
 
-  def min_size; end
+  def min_size
+    0 if @nums.length == 1 && @nums.first < @target
+  end
 end
