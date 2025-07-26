@@ -42,12 +42,7 @@ class SubArray
   def min_size
     while @right_pos < @nums.length
       # first position where left and right positions are at starting point
-      @sum = if @left_pos.zero? && @right_pos.zero?
-               @nums[@right_pos]
-             else
-               # add elements inside the window
-               @nums[@left_pos..@right_pos].sum
-             end
+      @sum = calculate_sum
 
       if solution_found?
         update_min_length
@@ -62,6 +57,14 @@ class SubArray
   end
 
   private
+
+  def calculate_sum
+    # first position where left and right positions are at starting point
+    return @nums[@right_pos] if @left_pos.zero? && @right_pos.zero?
+
+    # add elements inside the window
+    @nums[@left_pos..@right_pos].sum
+  end
 
   def update_min_length
     new_length = @right_pos - @left_pos + 1
